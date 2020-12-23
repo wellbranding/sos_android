@@ -12,11 +12,14 @@
         android:supportsRtl="true"
 
         android:theme="@style/Theme.StackOverflowSolutions">
-        <activity android:name="dh.sos.MainActivity" android:launchMode="singleInstance">
+        <activity android:name="dh.sos.ClientActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name="dh.sos.MainActivity">
         </activity>
 
     </application>

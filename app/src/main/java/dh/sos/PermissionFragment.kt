@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.idenfy.permissionissue.R
@@ -11,8 +12,13 @@ import com.idenfy.permissionissue.R
 
 class PermissionFragment : Fragment(R.layout.fragment_permission) {
 
+    lateinit var button2: Button
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        button2 = view.findViewById(R.id.button2)
+        button2.setOnClickListener {
+            (activity as MainActivity).returnToClientActivity()
+        }
         if (savedInstanceState == null) {
             PermissionsDelegateUtil().requestCameraPermission(this)
         } else {
@@ -35,7 +41,7 @@ class PermissionFragment : Fragment(R.layout.fragment_permission) {
     private fun handleCameraPermissionResult(permissionResult: PermissionResult) {
         when (permissionResult) {
             PermissionResult.PermissionGranted -> {
-                findNavController().popBackStack()
+
             }
             PermissionResult.PermissionNotGrantedRetryAuto -> {
                 PermissionsDelegateUtil().requestCameraPermission(this)
